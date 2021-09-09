@@ -13,6 +13,16 @@ o 0.05$ du kilomètre est exigé pour chaque kilomètre supplémentaire.Auteur: Char
 void main()
 {
    setlocale(LC_ALL, "");
+   // Déclaration des constantes
+   const int NB_KM_GRATUIT = 250;
+   const double COUT_LOCATION = 45;
+   const double CONSO = 7.6;
+   const double KM_PLUS = 0.05;
+   const double PRIX_LITRE = 1.35;
+
+
+
+
 
    // Déclaration des variables.
 
@@ -33,18 +43,18 @@ void main()
 
 
       // On va calculer le cout de la location
-      coutLocation = 45 * jour;
+      coutLocation = COUT_LOCATION * jour;
       // Si le nombre de km parcouru depasse 250km/jour alors on doit calculer le cout du km de plus.
-      if (Km > 250 * jour)
+      if (Km > KM_PLUS * jour)
       {
-         coutKmPlus = (Km - 250 * jour) * 0.05;
+         coutKmPlus = (Km - NB_KM_GRATUIT * jour) * NB_KM_GRATUIT;
       }
       else
       {
          coutKmPlus = 0;
       }
       // On calcule le cout de l'essence.
-      coutGaz = 7.6 * 1.35 * Km / 100;
+      coutGaz = CONSO * PRIX_LITRE * Km / 100;
       // On doit afficher le montant totale
       coutFinale = coutGaz + coutLocation + coutKmPlus;
       std::cout << "Ca va te couter..." << coutFinale << "$" << std::endl << "\n";
